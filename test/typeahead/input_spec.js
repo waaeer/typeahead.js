@@ -194,16 +194,19 @@ describe('Input', function() {
     });
 
     it('should trigger queryChanged if the query changed', function() {
-      var spy;
+      var spy,spy2;
 
       this.view.setQuery('wine');
       this.view.setInputValue('cheese');
       this.view.onSync('queryChanged', spy = jasmine.createSpy());
+	  this.$input.on('typeahead:querychange', spy2 = jasmine.createSpy());
 
       simulateInputEvent(this.$input);
 
       expect(spy).toHaveBeenCalled();
+	  expect(spy2).toHaveBeenCalled();
     });
+
 
     it('should trigger whitespaceChanged if whitespace changed', function() {
       var spy;

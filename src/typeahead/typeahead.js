@@ -204,6 +204,7 @@ var Typeahead = (function() {
 
     _onQueryChanged: function onQueryChanged(e, query) {
       this._minLengthMet(query) ? this.menu.update(query) : this.menu.empty();
+      this.eventBus.trigger("querychange");
     },
 
     _onWhitespaceChanged: function onWhitespaceChanged() {
