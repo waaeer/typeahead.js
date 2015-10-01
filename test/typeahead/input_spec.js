@@ -199,12 +199,12 @@ describe('Input', function() {
       this.view.setQuery('wine');
       this.view.setInputValue('cheese');
       this.view.onSync('queryChanged', spy = jasmine.createSpy());
-	  this.$input.on('typeahead:querychange', spy2 = jasmine.createSpy());
+      this.$input.on('typeahead:querychange', spy2 = jasmine.createSpy());
 
       simulateInputEvent(this.$input);
 
       expect(spy).toHaveBeenCalled();
-	  expect(spy2).toHaveBeenCalled();
+      expect(spy2).toHaveBeenCalled();
     });
 
 
