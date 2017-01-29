@@ -1,7 +1,7 @@
 /*!
  * typeahead.js 0.11.1
  * https://github.com/twitter/typeahead.js
- * Copyright 2013-2015 Twitter, Inc. and other contributors; Licensed MIT
+ * Copyright 2013-2017 Twitter, Inc. and other contributors; Licensed MIT
  */
 
 (function(root, factory) {
@@ -2035,6 +2035,10 @@
                 var $selectable;
                 if ($selectable = this.menu.getActiveSelectable()) {
                     this.select($selectable) && $e.preventDefault();
+                } else {
+                    if ($selectable = $(this.menu._getSelectables()[0])) {
+                        this.select($selectable) && $e.preventDefault();
+                    }
                 }
             },
             _onTabKeyed: function onTabKeyed(type, $e) {

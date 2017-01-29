@@ -163,6 +163,10 @@ var Typeahead = (function() {
 
       if ($selectable = this.menu.getActiveSelectable()) {
         this.select($selectable) && $e.preventDefault();
+      } else {
+        if($selectable = $(this.menu._getSelectables()[0])) {
+           this.select($selectable) && $e.preventDefault();
+        } 
       }
     },
 
