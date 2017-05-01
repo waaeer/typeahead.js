@@ -166,7 +166,7 @@ var Typeahead = (function() {
       } else {
         if($selectable = $(this.menu._getSelectables()[0])) {
            this.select($selectable) && $e.preventDefault();
-        } 
+        }
       }
     },
 
