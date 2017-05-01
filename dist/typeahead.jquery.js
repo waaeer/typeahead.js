@@ -672,6 +672,7 @@
             this.templates = getTemplates(o.templates, this.displayFn);
             this.source = o.source.__ttAdapter ? o.source.__ttAdapter() : o.source;
             this.async = _.isUndefined(o.async) ? this.source.length > 2 : !!o.async;
+            this.preprocessQueryForHighlight = o.preprocessQueryForHighlight;
             this._resetLastSuggestion();
             this.$el = $(o.node).addClass(this.classes.dataset).addClass(this.classes.dataset + "-" + this.name);
         }
@@ -755,7 +756,7 @@
                 this.highlight && highlight({
                     className: this.classes.highlight,
                     node: fragment,
-                    pattern: query
+                    pattern: this.preprocessQueryForHighlight ? this.preprocessQueryForHighlight(query) : query
                 });
                 return $(fragment);
             },

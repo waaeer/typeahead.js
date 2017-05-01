@@ -55,6 +55,8 @@ var Dataset = (function() {
     // a hint to figuring out of the source will return async suggestions
     this.async = _.isUndefined(o.async) ? this.source.length > 2 : !!o.async;
 
+	this.preprocessQueryForHighlight = o.preprocessQueryForHighlight;
+
     this._resetLastSuggestion();
 
     this.$el = $(o.node)
@@ -199,7 +201,7 @@ var Dataset = (function() {
       this.highlight && highlight({
         className: this.classes.highlight,
         node: fragment,
-        pattern: query
+        pattern: this.preprocessQueryForHighlight ? this.preprocessQueryForHighlight(query) : query
       });
 
       return $(fragment);
